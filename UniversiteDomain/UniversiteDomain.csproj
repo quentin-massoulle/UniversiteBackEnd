@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="DataAdapters\" />
-      <Folder Include="Entites\" />
       <Folder Include="UseCases\" />
     </ItemGroup>
 
