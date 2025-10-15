@@ -8,8 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateFormations.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Entites/Parcours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Parcours.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +36,17 @@
     <setting file="file://$PROJECT_DIR$/UniverciteDomain/GlobalUsings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniverciteDomain/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IEtudiantRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IParcoursRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Etudiant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Parcours.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/DuplicateEmailException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/DuplicateNumEtudException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidEmailException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidNomEtudiantException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateFormations.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Create/CreateEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/CreateParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Util/CheckEmail.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -105,7 +110,7 @@
       <updated>1759329103167</updated>
       <workItem from="1759329104667" duration="1059000" />
       <workItem from="1759330431482" duration="3357000" />
-      <workItem from="1760530411472" duration="2501000" />
+      <workItem from="1760530411472" duration="3352000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -195,7 +200,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760531858804</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="wip">
+      <option name="closed" value="true" />
+      <created>1760533876539</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1760533876539</updated>
+    </task>
+    <task id="LOCAL-00013" summary="wip">
+      <option name="closed" value="true" />
+      <created>1760534148912</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1760534148912</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,12 +231,12 @@
     <MESSAGE value="add solution" />
     <MESSAGE value="creation forlder" />
     <MESSAGE value="First Class" />
-    <MESSAGE value="wip" />
     <MESSAGE value="add exeption etudiant" />
     <MESSAGE value="creation interface IRepository" />
     <MESSAGE value="create project teste" />
     <MESSAGE value="tets" />
-    <option name="LAST_COMMIT_MESSAGE" value="tets" />
+    <MESSAGE value="wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
