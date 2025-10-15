@@ -7,7 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="" />
+    <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,29 +31,46 @@
     &quot;accountId&quot;: &quot;7460a12f-5c76-4a64-add5-0d4c77b6a28a&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/UniverciteDomain/GlobalUsings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniverciteDomain/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IEtudiantRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Etudiant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/DuplicateEmailException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/DuplicateNumEtudException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidEmailException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidNomEtudiantException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Create/CreateEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Util/CheckEmail.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="33T7F6QLkbbGFJxprzUXFguyUEs" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="UniversiteBackEnd" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -84,7 +104,8 @@
       <option name="presentableId" value="Default" />
       <updated>1759329103167</updated>
       <workItem from="1759329104667" duration="1059000" />
-      <workItem from="1759330431482" duration="672000" />
+      <workItem from="1759330431482" duration="3357000" />
+      <workItem from="1760530411472" duration="2501000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -94,7 +115,87 @@
       <option name="project" value="LOCAL" />
       <updated>1759329451097</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="first Commit">
+      <option name="closed" value="true" />
+      <created>1759331118959</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759331118959</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add solution">
+      <option name="closed" value="true" />
+      <created>1759331448995</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1759331448995</updated>
+    </task>
+    <task id="LOCAL-00004" summary="creation forlder">
+      <option name="closed" value="true" />
+      <created>1759331876085</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1759331876085</updated>
+    </task>
+    <task id="LOCAL-00005" summary="First Class">
+      <option name="closed" value="true" />
+      <created>1759331978219</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759331978219</updated>
+    </task>
+    <task id="LOCAL-00006" summary="wip">
+      <option name="closed" value="true" />
+      <created>1759332718771</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759332718771</updated>
+    </task>
+    <task id="LOCAL-00007" summary="wip">
+      <option name="closed" value="true" />
+      <created>1759333333748</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1759333333748</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add exeption etudiant">
+      <option name="closed" value="true" />
+      <created>1759333565251</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1759333565251</updated>
+    </task>
+    <task id="LOCAL-00009" summary="creation interface IRepository">
+      <option name="closed" value="true" />
+      <created>1759334045114</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1759334045114</updated>
+    </task>
+    <task id="LOCAL-00010" summary="create project teste">
+      <option name="closed" value="true" />
+      <created>1760531673358</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1760531673358</updated>
+    </task>
+    <task id="LOCAL-00011" summary="tets">
+      <option name="closed" value="true" />
+      <created>1760531858804</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760531858804</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,7 +206,16 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="first Commit" />
+    <MESSAGE value="add solution" />
+    <MESSAGE value="creation forlder" />
+    <MESSAGE value="First Class" />
+    <MESSAGE value="wip" />
+    <MESSAGE value="add exeption etudiant" />
+    <MESSAGE value="creation interface IRepository" />
+    <MESSAGE value="create project teste" />
+    <MESSAGE value="tets" />
+    <option name="LAST_COMMIT_MESSAGE" value="tets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
