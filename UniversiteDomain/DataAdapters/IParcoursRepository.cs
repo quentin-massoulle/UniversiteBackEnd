@@ -1,6 +1,11 @@
+using UniversiteDomain.Entites;
+
 namespace UniversiteDomain.DataAdapters;
 
-public class IParcoursRepository
+public interface IParcoursRepository : IRepository<Parcours>
 {
-    
+    Task<Parcours> AddEtudiantAsync(Parcours parcours, Etudiant etudiant);
+    Task<Parcours> AddEtudiantAsync(long idParcours, long idEtudiant);
+    Task<Parcours> AddEtudiantAsync(Parcours ? parcours, List<Etudiant> etudiants);
+    Task<Parcours> AddEtudiantAsync(long idParcours, long[] idEtudiants);
 }
