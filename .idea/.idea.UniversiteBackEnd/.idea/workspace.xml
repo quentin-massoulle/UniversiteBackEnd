@@ -8,18 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/DataAdaptersFactory/IRepositoryFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Ue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/InvalidAnneeFormationException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/InvalidNomParcoursException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Create/CreateUeUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/ParcoursUnitTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateUeDansParcoursException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/UeNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/AddUeDansParcoursUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/UeDansParcoursUseCase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/Create/CreateParcoursUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/Create/CreateParcoursUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/EtudianrUnitTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/EtudiantUnitTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/DataAdaptersFactory/IRepositoryFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/DataAdaptersFactory/IRepositoryFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IParcoursRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IParcoursRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Entites/Parcours.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Parcours.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Create/CreateUeUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Create/CreateUeUseCase.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,12 +58,19 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidNomEtudiantException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateFormations.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateInscriptionException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateUeDansParcoursException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/InvalidAnneeFormationException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/InvalidNomParcoursException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/ParcoursNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/DuplicateNumeroUeException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/InvalidIntituleUeException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/UeNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Create/CreateEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/AddUeDansParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/Create/CreateParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Quentin/RiderProjects/UniversiteBackEnd/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/UeDansParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Create/CreateUeUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Util/CheckEmail.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Quentin/RiderProjects/UniversiteBackEnd/UniversiteDomainUnitTests/EtudianrUnitTest.cs" root0="SKIP_HIGHLIGHTING" />
@@ -133,7 +138,7 @@
       <workItem from="1759329104667" duration="1059000" />
       <workItem from="1759330431482" duration="3357000" />
       <workItem from="1760530411472" duration="6006000" />
-      <workItem from="1762348654946" duration="4275000" />
+      <workItem from="1762348654946" duration="5217000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -263,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762348849839</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="wip">
+      <option name="closed" value="true" />
+      <created>1762353281478</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1762353281478</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,11 +295,11 @@
     <MESSAGE value="creation interface IRepository" />
     <MESSAGE value="create project teste" />
     <MESSAGE value="tets" />
-    <MESSAGE value="wip" />
     <MESSAGE value="DuplicateFormations execption" />
     <MESSAGE value="test" />
     <MESSAGE value="test 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="test 2" />
+    <MESSAGE value="wip" />
+    <option name="LAST_COMMIT_MESSAGE" value="wip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

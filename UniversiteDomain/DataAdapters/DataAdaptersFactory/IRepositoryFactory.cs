@@ -7,6 +7,8 @@ public interface IRepositoryFactory
     // Méthodes de gestion de la dadasource
     // Ce sont des méthodes qui permettent de gérer l'ensemble du data source
     // comme par exemple tout supprimer ou tout créer
+    
+    IUeRepository UeRepository();
     Task EnsureDeletedAsync();
     Task EnsureCreatedAsync();
     Task SaveChangesAsync();
