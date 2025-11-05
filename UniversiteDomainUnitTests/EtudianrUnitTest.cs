@@ -19,7 +19,7 @@ public class EtudiantUnitTest
         String numEtud = "et1";
         string nom = "Durant";
         string prenom = "Jean";
-        string email = "jean.durant@etud.u-picardie.fr";
+        string email = "jean.durant@etud.u-picardie.fr;
         
         // On crée l'étudiant qui doit être ajouté en base
         Etudiant etudiantSansId = new Etudiant{NumEtud=numEtud, Nom = nom, Prenom=prenom, Email=email};
