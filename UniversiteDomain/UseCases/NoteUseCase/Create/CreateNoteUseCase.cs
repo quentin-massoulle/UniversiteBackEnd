@@ -7,10 +7,15 @@ using UniversiteDomain.Exceptions.UeExeptions;
 
 namespace UniversiteDomain.UseCases.NoteUseCase.Create;
 
-public class CreateNoteUseCase(INoteRepository noteRepository)
+public class CreateNoteUseCase(
+    INoteRepository noteRepository,
+    IUeRepository ueRepository,
+    IEtudiantRepository etudiantRepository)
 {
-    private readonly IUeRepository _ueRepository;
-    private readonly IEtudiantRepository _etudiantRepository;
+    // Ils sont maintenant disponibles directement pour la classe
+    private readonly INoteRepository _noteRepository = noteRepository;
+    private readonly IUeRepository _ueRepository = ueRepository;
+    private readonly IEtudiantRepository _etudiantRepository = etudiantRepository;
     public async Task<Note> ExecuteAsync(float Valeur,long EtudiantId ,long UeId )
     {
         var note = new Note {Valeur= Valeur , EtudiantId = EtudiantId, UeId = UeId};
@@ -36,11 +41,10 @@ public class CreateNoteUseCase(INoteRepository noteRepository)
         
         
         //verifie la note est comprise entre 0 et 20 
-        if (note.Valeur>=0 && note.Valeur<= 20 )
+        if (note.Valeur <= 0 && note.Valeur >= 20)
             throw new InvalidValeurNoteException(
                 note.Valeur + " la note doit etre comprise entre 0 et 20 "
             );
-        // Un étudiant ne peut avoir une note que dans une Ue du parcours dans lequel il est inscrit
         // doit verifier si l'eu existe 
         Ue? ueExistante = await _ueRepository.GetByIdAsync(note.UeId);
         if (ueExistante == null)
@@ -55,11 +59,22 @@ public class CreateNoteUseCase(INoteRepository noteRepository)
                 note. EtudiantId+ " l'etudiant n'existe pas "
             );
         
+        long idParcoursEtudiant = etudiantExiste.ParcoursSuivi.Id;
+        
+        bool estEligible = ueExistante.EnseigneeDans != null && 
+                           ueExistante.EnseigneeDans.Any(p => p.Id == idParcoursEtudiant);
+
+        if (!estEligible)
+        {
+            throw new InvalidUeEtudiantExeption(
+                $"L'UE {note.UeId} n'est pas enseignée dans le parcours {idParcoursEtudiant} de l'étudiant."
+            );
+        }
         List<Note> existe = await noteRepository.FindByConditionAsync(n => n.UeId.Equals(note.UeId) );
 
         if (existe is { Count: > 0 })
             throw new DuplicateNoteUeException(
-                " l'etudiant possede deja une note."
+                " l'etudiant possede deja une note pour cette eu ."
             );
         //
         existe = await noteRepository.FindByConditionAsync(n => n.UeId.Equals(note.Etudiant.ParcoursSuivi.Id) );
