@@ -7,4 +7,6 @@ public interface IUeRepository
     Task<Ue> CreateAsync(Ue ue);
     Task<List<Ue>> FindByConditionAsync(Expression<Func<Ue, bool>> predicate);
     Task SaveChangesAsync();
+    
+    Task<Ue?> GetByIdAsync(long id);
 }

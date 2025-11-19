@@ -8,11 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/UeunitTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/DuplicateNoteUeException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/InvalidUeEtudiantExeption.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/InvalidValeurNoteException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/NoteUseCase/Create/CreateNoteUseCase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Get/GetUeUseCase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/AddUeDansParcoursUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/UedansParcoursUseCase/AddUeDansParcoursUseCase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/UeDansParcoursUseCase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/INoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/INoteRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Entites/Note.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Note.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +35,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/quentin-massoulle/UniversiteBackEnd&quot;,
-    &quot;accountId&quot;: &quot;a571ea44-38f8-4e32-bb47-fa347509539b&quot;
+    &quot;url&quot;: &quot;git@github.com:quentin-massoulle/UniversiteBackEnd.git&quot;,
+    &quot;accountId&quot;: &quot;7460a12f-5c76-4a64-add5-0d4c77b6a28a&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -40,10 +45,12 @@
     <setting file="file://$PROJECT_DIR$/UniverciteDomain/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/DataAdaptersFactory/IRepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IEtudiantRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/INoteRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IParcoursRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Etudiant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Note.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Parcours.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Entites/Ue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/DuplicateEmailException.cs" root0="FORCE_HIGHLIGHTING" />
@@ -51,6 +58,9 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/EtudiantNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidEmailException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/EtudiantExceptions/InvalidNomEtudiantException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/DuplicateNoteUeException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/InvalidUeEtudiantExeption.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/InvalidValeurNoteException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateFormations.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateInscriptionException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/DuplicateUeDansParcoursException.cs" root0="FORCE_HIGHLIGHTING" />
@@ -61,18 +71,21 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/InvalidIntituleUeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/UeNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Create/CreateEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/NoteUseCase/Create/CreateNoteUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/Create/CreateParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Quentin/RiderProjects/UniversiteBackEnd/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/UedansParcoursUseCase/AddUeDansParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Create/CreateUeUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Get/GetUeUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Util/CheckEmail.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Quentin/RiderProjects/UniversiteBackEnd/UniversiteDomainUnitTests/EtudianrUnitTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/EtudiantUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/ParcoursUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/UeunitTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -88,17 +101,20 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.UniversiteBackEnd">
     <configuration name="UniversiteBackEnd" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -132,6 +148,8 @@
       <workItem from="1759330431482" duration="3357000" />
       <workItem from="1760530411472" duration="6006000" />
       <workItem from="1762348654946" duration="6156000" />
+      <workItem from="1763560948965" duration="2940000" />
+      <workItem from="1763563955810" duration="5103000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />

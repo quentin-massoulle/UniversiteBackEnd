@@ -8,4 +8,9 @@ public class Note
     
     public Etudiant Etudiant { get; set; } = new();
     public Ue Ue { get; set; } = new();
+    
+    public override string ToString()
+    {
+        return "ID etudiant" +" : "+EtudiantId+" Ue ID ; " + UeId + " valeur ; " +  Valeur;
+    }
 }

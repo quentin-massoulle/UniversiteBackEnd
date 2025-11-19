@@ -1,6 +1,8 @@
+using UniversiteDomain.Entites;
+
 namespace UniversiteDomain.DataAdapters;
 
-public class INoteRepository
+public interface INoteRepository : IRepository<Note>
 {
     
 }
