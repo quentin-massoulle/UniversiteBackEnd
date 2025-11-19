@@ -9,6 +9,9 @@ public interface IRepositoryFactory
     // comme par exemple tout supprimer ou tout créer
     
     IUeRepository UeRepository();
+    
+    INoteRepository NoteRepository();
+    
     Task EnsureDeletedAsync();
     Task EnsureCreatedAsync();
     Task SaveChangesAsync();
