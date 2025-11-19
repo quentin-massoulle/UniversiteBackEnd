@@ -6,7 +6,6 @@ using UniversiteDomain.Exceptions.UeExeptions;
 namespace UniversiteDomain.UseCases.UeUseCase.Get;
 public class GetUeUseCase(IUeRepository ueRepository)
 {
-    // 🎯 L'entrée est l'ID, pas l'objet UE complet
     public async Task<Ue> ExecuteAsync(long ueId)
     {
         // 1. Validation d'entrée minimale

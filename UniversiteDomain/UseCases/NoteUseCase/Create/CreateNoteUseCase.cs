@@ -1,5 +1,6 @@
 using UniversiteDomain.DataAdapters;
 using UniversiteDomain.Entites;
+using UniversiteDomain.Exceptions.EtudiantExceptions;
 using UniversiteDomain.UseCases.UeUseCase.Get;
 using UniversiteDomain.Exceptions.NoteExeptions;
 using UniversiteDomain.Exceptions.UeExeptions;
@@ -9,6 +10,7 @@ namespace UniversiteDomain.UseCases.NoteUseCase.Create;
 public class CreateNoteUseCase(INoteRepository noteRepository)
 {
     private readonly IUeRepository _ueRepository;
+    private readonly IEtudiantRepository _etudiantRepository;
     public async Task<Note> ExecuteAsync(float Valeur,long EtudiantId ,long UeId )
     {
         var note = new Note {Valeur= Valeur , EtudiantId = EtudiantId, UeId = UeId};
@@ -41,18 +43,23 @@ public class CreateNoteUseCase(INoteRepository noteRepository)
         // Un étudiant ne peut avoir une note que dans une Ue du parcours dans lequel il est inscrit
         // doit verifier si l'eu existe 
         Ue? ueExistante = await _ueRepository.GetByIdAsync(note.UeId);
-        if (ueExistante != null)
+        if (ueExistante == null)
             throw new InvalidIdUe(
-                note.Valeur + " la note doit etre comprise entre 0 et 20 "
+                note.UeId + " l'ue n'existe pas "
             );
         
-        
         // doit verifier si l'etudiant est inscrit dans le parcours 
+        Etudiant? etudiantExiste = await _etudiantRepository.GetByIdAsync(note.EtudiantId);
+        if (etudiantExiste == null)
+            throw new EtudiantNotFoundException(
+                note. EtudiantId+ " l'etudiant n'existe pas "
+            );
+        
         List<Note> existe = await noteRepository.FindByConditionAsync(n => n.UeId.Equals(note.UeId) );
 
         if (existe is { Count: > 0 })
             throw new DuplicateNoteUeException(
-                note.Valeur + " la note doit etre comprise entre 0 et 20 "
+                " l'etudiant possede deja une note."
             );
         //
         existe = await noteRepository.FindByConditionAsync(n => n.UeId.Equals(note.Etudiant.ParcoursSuivi.Id) );
