@@ -11,9 +11,13 @@ public class Etudiant
     
     // ManyToOne : l'étudiant est inscrit dans un parcours
     public Parcours? ParcoursSuivi { get; set; } = null;
-
+    
+    // OneToMany vers Note 
+    public ICollection<Note>? NotesObtenues { get; set; } = new List<Note>();
+    
     public override string ToString()
     {
-        return $"ID {Id} : {NumEtud} - {Nom} {Prenom} inscrit en "+ParcoursSuivi;
+        return $"ID {Id} : {NumEtud} - {Nom} {Prenom} inscrit en "+ParcoursSuivi 
+        ;
     }
 }

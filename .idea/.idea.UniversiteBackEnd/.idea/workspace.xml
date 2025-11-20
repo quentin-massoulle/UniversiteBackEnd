@@ -8,9 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Data/UniversiteDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/Repository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteBackEnd.sln" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteBackEnd.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Entites/Etudiant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Etudiant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Entites/Ue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Ue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteEFDataProvider/UniversiteEFDataProvider.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/UniversiteEFDataProvider.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +78,8 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/EtudiantUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/ParcoursUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/UeunitTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteEFDataProvider/Data/UniversiteDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/Repository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
