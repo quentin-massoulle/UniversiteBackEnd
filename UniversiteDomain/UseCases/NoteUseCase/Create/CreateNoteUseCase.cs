@@ -41,7 +41,7 @@ public class CreateNoteUseCase(
         
         
         //verifie la note est comprise entre 0 et 20 
-        if (note.Valeur <= 0 && note.Valeur >= 20)
+        if (note.Valeur < 0 && note.Valeur > 20)
             throw new InvalidValeurNoteException(
                 note.Valeur + " la note doit etre comprise entre 0 et 20 "
             );

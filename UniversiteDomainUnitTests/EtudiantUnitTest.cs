@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using Moq;
 using UniversiteDomain.DataAdapters;
 using UniversiteDomain.Entites;
+using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.UseCases.EtudiantUseCases.Create;
 
 namespace UniversiteDomainUnitTests;
@@ -13,8 +14,9 @@ public class EtudiantUnitTest
     {
     }
     [Test]
-    public async Task CreateEtudiantUseCase()
+    public async Task CreateEtudiantUseCase_Success()
     {
+        // ARRANGE
         long id = 1;
         String numEtud = "et1";
         string nom = "Durant";
@@ -23,34 +25,53 @@ public class EtudiantUnitTest
         
         // On crée l'étudiant qui doit être ajouté en base
         Etudiant etudiantSansId = new Etudiant{NumEtud=numEtud, Nom = nom, Prenom=prenom, Email=email};
-        //  Créons le mock du repository
-        // On initialise une fausse datasource qui va simuler un EtudiantRepository
-        var mock = new Mock<IEtudiantRepository>();
-        // Il faut ensuite aller dans le use case pour voir quelles fonctions simuler
-        // Nous devons simuler FindByCondition et Create
         
-        // Simulation de la fonction FindByCondition
-        // On dit à ce mock que l'étudiant n'existe pas déjà
-        // La réponse à l'appel FindByCondition est donc une liste vide
-        var reponseFindByCondition = new List<Etudiant>();
-        // On crée un bouchon dans le mock pour la fonction FindByCondition
-        // Quelque soit le paramètre de la fonction FindByCondition, on renvoie la liste vide
-        mock.Setup(repo=>repo.FindByConditionAsync(It.IsAny<Expression<Func<Etudiant, bool>>>())).ReturnsAsync(reponseFindByCondition);
+        // 1. Définition des Mocks
+        var mockEtudiantRepository = new Mock<IEtudiantRepository>();
+        var mockFactory = new Mock<IRepositoryFactory>();
+
+        // Données de réponse attendues
+        var reponseVierge = new List<Etudiant>();
+        Etudiant etudiantCree = new Etudiant{Id=id, NumEtud=numEtud, Nom = nom, Prenom=prenom, Email=email};
         
-        // Simulation de la fonction Create
-        // On lui dit que l'ajout d'un étudiant renvoie un étudiant avec l'Id 1
-        Etudiant etudiantCree =new Etudiant{Id=id,NumEtud=numEtud, Nom = nom, Prenom=prenom, Email=email};
-        mock.Setup(repoEtudiant=>repoEtudiant.CreateAsync(etudiantSansId)).ReturnsAsync(etudiantCree);
+        // 2. Simulation de la fonction FindByConditionAsync (Deux appels sont faits dans le Use Case)
+        // On dit au mock que l'étudiant n'existe ni par NumEtud ni par Email.
+        // Quel que soit le paramètre de la fonction, on renvoie la liste vide.
+        mockEtudiantRepository
+            .Setup(repo => repo.FindByConditionAsync(It.IsAny<Expression<Func<Etudiant, bool>>>()))
+            .ReturnsAsync(reponseVierge);
         
-        // On crée le bouchon (un faux etudiantRepository). Il est prêt à être utilisé
-        var fauxEtudiantRepository = mock.Object;
+        // 3. Simulation de la fonction CreateAsync
+        mockEtudiantRepository
+            .Setup(repoEtudiant => repoEtudiant.CreateAsync(etudiantSansId))
+            .ReturnsAsync(etudiantCree);
         
-        // Création du use case en injectant notre faux repository
-        CreateEtudiantUseCase useCase=new CreateEtudiantUseCase(fauxEtudiantRepository);
+        // 4. Simulation de la sauvegarde
+        // CORRECTION : Supprimer l'anti-pattern .Wait() du Use Case et simuler la tâche terminée.
+        mockFactory.Setup(facto => facto.SaveChangesAsync()).Returns(Task.CompletedTask); 
+
+        // 5. Configuration de la Factory (Le cœur de la correction pour ce style de code)
+        // On dit à la Factory de retourner le mock EtudiantRepository quand il est demandé.
+        mockFactory.Setup(facto => facto.EtudiantRepository()).Returns(mockEtudiantRepository.Object);
+        
+        // Création du use case en injectant la Factory
+        CreateEtudiantUseCase useCase = new CreateEtudiantUseCase(mockFactory.Object);
+        
+        // ACT
         // Appel du use case
-        var etudiantTeste=await useCase.ExecuteAsync(etudiantSansId);
+        var etudiantTeste = await useCase.ExecuteAsync(etudiantSansId);
         
-        // Vérification du résultat
+        // ASSERT
+        
+        // Vérification que les Repositories ont été utilisés comme attendu
+        
+        // On doit vérifier que FindByCondition a été appelé deux fois (une fois pour NumEtud, une fois pour Email)
+        mockEtudiantRepository.Verify(repo => repo.FindByConditionAsync(It.IsAny<Expression<Func<Etudiant, bool>>>()), Times.Exactly(2), "La vérification d'unicité (NumEtud et Email) doit être faite deux fois.");
+        
+        // On vérifie que CreateAsync a été appelé une seule fois
+        mockEtudiantRepository.Verify(repo => repo.CreateAsync(etudiantSansId), Times.Once, "La création doit être appelée une fois.");
+        
+        // Vérification du résultat (L'entité retournée doit correspondre à la simulation)
         Assert.That(etudiantTeste.Id, Is.EqualTo(etudiantCree.Id));
         Assert.That(etudiantTeste.NumEtud, Is.EqualTo(etudiantCree.NumEtud));
         Assert.That(etudiantTeste.Nom, Is.EqualTo(etudiantCree.Nom));
