@@ -5,7 +5,6 @@
     &lt;TestAncestor&gt;
       &lt;TestId&gt;NUnit3x::334ACA3D-4725-400C-B985-63F4BC09F53A::net8.0::UniversiteDomainUnitTests.EtudiantUnitTest&lt;/TestId&gt;
       &lt;TestId&gt;NUnit3x::334ACA3D-4725-400C-B985-63F4BC09F53A::net8.0::UniversiteDomainUnitTests.ParcoursUnitTest.AddEtudiantDansParcoursUseCase&lt;/TestId&gt;
-      &lt;TestId&gt;NUnit3x::334ACA3D-4725-400C-B985-63F4BC09F53A::net8.0::UniversiteDomainUnitTests.NoteUnitTest.CreateNoteUseCase_NewValidNote_ReturnsSuccessWithCreatedNote&lt;/TestId&gt;
       &lt;TestId&gt;NUnit3x::334ACA3D-4725-400C-B985-63F4BC09F53A::net8.0::UniversiteDomainUnitTests.NoteUnitTest&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
     &lt;ProjectFile&gt;334ACA3D-4725-400C-B985-63F4BC09F53A/f:UeunitTest.cs&lt;/ProjectFile&gt;
@@ -14,6 +13,5 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6e5fbf12_002Dd0ef_002D42ab_002Dbf9d_002Dc5db2c7b77a7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UeUnitTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;NUnit3x::334ACA3D-4725-400C-B985-63F4BC09F53A::net8.0::UniversiteDomainUnitTests.UeUnitTest&lt;/TestId&gt;
-    &lt;TestId&gt;NUnit3x::334ACA3D-4725-400C-B985-63F4BC09F53A::net8.0::UniversiteDomainUnitTests.NoteUnitTest.CreateNoteUseCase_NewValidNote_ReturnsSuccessWithCreatedNote&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

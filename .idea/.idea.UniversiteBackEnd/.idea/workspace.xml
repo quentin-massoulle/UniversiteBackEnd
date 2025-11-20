@@ -8,16 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/DuplicateNoteUeException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/InvalidUeEtudiantExeption.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Exceptions/NoteExeptions/InvalidValeurNoteException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/NoteUseCase/Create/CreateNoteUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCase/Get/GetUeUseCase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteBackEnd.sln" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteBackEnd.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteBackEnd.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/INoteRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/INoteRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Entites/Note.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Note.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +61,7 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/InvalidNomParcoursException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/ParcoursExeptions/ParcoursNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/DuplicateNumeroUeException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/InvalidIdUe.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/InvalidIntituleUeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/UeNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Create/CreateEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -114,7 +108,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.UniversiteBackEnd">
+  <component name="RunManager">
     <configuration name="UniversiteBackEnd" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
