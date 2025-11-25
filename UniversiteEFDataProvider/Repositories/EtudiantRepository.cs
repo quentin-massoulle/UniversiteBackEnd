@@ -32,4 +32,5 @@ public class EtudiantRepository(UniversiteDbContext context) : Repository<Etudia
     {
         return await context.Etudiants.ToListAsync();
     }
+    
 }

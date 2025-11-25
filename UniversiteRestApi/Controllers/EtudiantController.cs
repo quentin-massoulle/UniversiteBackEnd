@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.Entites;
 using UniversiteDomain.UseCases.EtudiantUseCases.Create;
+using UniversiteDomain.UseCases.EtudiantUseCases.Delete;
 using UniversiteDomain.UseCases.EtudiantUseCases.Get;
 
 namespace UniversiteRestApi.Controllers
@@ -24,7 +25,7 @@ namespace UniversiteRestApi.Controllers
             return Ok(etudiants);
         }
 
-        // GET api/<EtudiantController>/5
+        
         // GET api/<EtudiantApi>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Etudiant>> Get(long id)
@@ -56,8 +57,10 @@ namespace UniversiteRestApi.Controllers
 
         // DELETE api/<EtudiantController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            DeleteEtudiantUseCase uc=new DeleteEtudiantUseCase(repositoryFactory);
+            await uc.ExecuteAsync(id);
         }
     }
 }

@@ -10,10 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Delete/DeleteEtudiantUseCase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IEtudiantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IEtudiantRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Get/GetEtudiantUseCases.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Get/GetEtudiantUseCases.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UniversiteDomain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UniversiteDomain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/EtudiantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/EtudiantRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UniversiteRestApi/Controllers/EtudiantController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteRestApi/Controllers/EtudiantController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/InvalidIntituleUeException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Exceptions/UeExeptions/UeNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Create/CreateEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/EtudiantUseCases/Delete/DeleteEtudiantUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/NoteUseCase/Create/CreateNoteUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/Create/CreateParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/ParcoursUseCase/EtudiantDansParcours/AddEtudiantDansParcoursUseCase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -200,7 +202,7 @@
       <workItem from="1763663195136" duration="2658000" />
       <workItem from="1763670863173" duration="302000" />
       <workItem from="1763671180926" duration="2676000" />
-      <workItem from="1764088389838" duration="1524000" />
+      <workItem from="1764088389838" duration="3888000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
