@@ -1,33 +1,33 @@
-using UniversiteDomain.DataAdapters;
+using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.Entites;
 using UniversiteDomain.Exceptions.EtudiantExceptions;
 
-
 namespace UniversiteDomain.UseCases.EtudiantUseCases.Get;
 
-public class GetEtudiantUseCases (IEtudiantRepository etudiantRepository)
+// J'ai renommé la classe au singulier "UseCase" par convention
+public class GetEtudiantUseCase(IRepositoryFactory repositoryFactory)
 {
-    
     public async Task<Etudiant> ExecuteAsync(long etudiantId)
     {
-        // 1. Validation d'entrée minimale
         if (etudiantId <= 0)
         {
-            throw new ArgumentException("L'identifiant de l'etudiant doit être valide.", nameof(etudiantId));
+            throw new ArgumentException("L'identifiant de l'étudiant doit être valide (supérieur à 0).", nameof(etudiantId));
         }
-
-        // 2. Appel du Repository pour la récupération
-        Etudiant? etudiant = await etudiantRepository.GetByIdAsync(etudiantId); 
-
-        // 3. Vérification du résultat (Règle d'Application)
+        Etudiant? etudiant = await repositoryFactory.EtudiantRepository().GetByIdAsync(etudiantId); 
         if (etudiant == null)
         {
-            // Lève une exception si l'etudiant n'existe pas (règle métier d'existence)
-            throw new EtudiantNotFoundException($"L'Unité d'Enseignement avec l'ID {etudiantId} n'a pas été trouvée.");
+            throw new EtudiantNotFoundException($"L'étudiant avec l'ID {etudiantId} n'a pas été trouvé.");
         }
-
-        // 4. Retourne l'entité
         return etudiant;
     }
+
+    public async Task<List<Etudiant>> ExecuteAsync()
+    {
+        // On appelle la méthode du repository qui renvoie tout (souvent appelée GetAllAsync ou FindAllAsync)
+        List<Etudiant> etudiants = await repositoryFactory.EtudiantRepository().GetAllAsync();
     
+        // Optionnel : Vous pouvez lever une exception si la liste est vide, 
+        // mais conventionnellement on renvoie juste une liste vide [].
+        return etudiants;
+    }
 }

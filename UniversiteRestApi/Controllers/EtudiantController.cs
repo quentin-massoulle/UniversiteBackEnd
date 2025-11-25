@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.Entites;
 using UniversiteDomain.UseCases.EtudiantUseCases.Create;
+using UniversiteDomain.UseCases.EtudiantUseCases.Get;
 
 namespace UniversiteRestApi.Controllers
 {
@@ -12,16 +13,30 @@ namespace UniversiteRestApi.Controllers
     {
         // GET: api/<EtudiantController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<Etudiant>> Get()
         {
-            return new string[] { "value1", "value2" };
+            GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
+            
+            // On récupère l'étudiant via le UseCase
+            List<Etudiant> etudiants = await uc.ExecuteAsync();
+
+            
+            return Ok(etudiants);
         }
 
         // GET api/<EtudiantController>/5
+        // GET api/<EtudiantApi>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Etudiant>> Get(long id)
         {
-            return "value";
+            GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
+            
+            // On récupère l'étudiant via le UseCase
+            Etudiant etudiant = await uc.ExecuteAsync(id);
+
+            // On retourne le code HTTP 200 (OK) avec les données de l'étudiant
+            return Ok(etudiant);
+
         }
 
         // Crée un nouvel étudiant sans parcours

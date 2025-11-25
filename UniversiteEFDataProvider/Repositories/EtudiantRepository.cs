@@ -25,9 +25,11 @@ public class EtudiantRepository(UniversiteDbContext context) : Repository<Etudia
     }
     public async Task<Etudiant?> GetByIdAsync(long id)
     {
-        
         return await context.Etudiants.FindAsync(id); 
+    }
 
-       
+    public async Task<List<Etudiant>> GetAllAsync()
+    {
+        return await context.Etudiants.ToListAsync();
     }
 }
