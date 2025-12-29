@@ -1,10 +1,11 @@
 using UniversiteDomain.DataAdapters;
+using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.Entites;
 using UniversiteDomain.Exceptions.UeExeptions;
 
 namespace UniversiteDomain.UseCases.UeUseCases.Create;
 
-public class CreateUeUseCase(IUeRepository ueRepository)
+public class CreateUeUseCase(IRepositoryFactory repositoryFactory)
 {
     public async Task<Ue> ExecuteAsync(string numeroUe, string intitule)
     {
@@ -15,8 +16,8 @@ public class CreateUeUseCase(IUeRepository ueRepository)
     public async Task<Ue> ExecuteAsync(Ue ue)
     {
         await CheckBusinessRules(ue);
-        Ue created = await ueRepository.CreateAsync(ue);
-        ueRepository.SaveChangesAsync().Wait();
+        Ue created = await repositoryFactory.UeRepository().CreateAsync(ue);
+        repositoryFactory.SaveChangesAsync().Wait();
         return created;
     }
 
@@ -25,10 +26,10 @@ public class CreateUeUseCase(IUeRepository ueRepository)
         ArgumentNullException.ThrowIfNull(ue);
         ArgumentNullException.ThrowIfNull(ue.NumeroUe);
         ArgumentNullException.ThrowIfNull(ue.Intitule);
-        ArgumentNullException.ThrowIfNull(ueRepository);
+        ArgumentNullException.ThrowIfNull(repositoryFactory);
 
         // 🔍 Vérifie si une UE avec le même numéro existe déjà
-        List<Ue> existe = await ueRepository.FindByConditionAsync(u => u.NumeroUe.Equals(ue.NumeroUe));
+        List<Ue> existe = await repositoryFactory.UeRepository().FindByConditionAsync(u => u.NumeroUe.Equals(ue.NumeroUe));
 
         if (existe is { Count: > 0 })
             throw new DuplicateNumeroUeException(
