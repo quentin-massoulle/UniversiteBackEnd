@@ -57,8 +57,8 @@ using(var scope = app.Services.CreateScope())
 }
 
 // Initisation de la base de données
-ILogger logger = app.Services.GetRequiredService<ILogger<BdBuilder>>();
-logger.LogInformation("Chargement des données de test");
+ILogger loggerDB = app.Services.GetRequiredService<ILogger<BdBuilder>>();
+loggerDB.LogInformation("Chargement des données de test");
 using(var scope = app.Services.CreateScope())
 {
     UniversiteDbContext context = scope.ServiceProvider.GetRequiredService<UniversiteDbContext>();

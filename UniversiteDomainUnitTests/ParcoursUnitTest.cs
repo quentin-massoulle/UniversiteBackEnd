@@ -4,6 +4,7 @@ using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.Entites;
 using UniversiteDomain.UseCases.EtudiantUseCases;
 using UniversiteDomain.UseCases.ParcoursUseCase;
+using UniversiteDomain.UseCases.ParcoursUseCases.Create;
 using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
 
 namespace UniversiteDomainUnitTests;

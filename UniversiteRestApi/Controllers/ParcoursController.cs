@@ -11,6 +11,7 @@ using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
 using UniversiteDomain.Exceptions.EtudiantExceptions;
 using UniversiteDomain.UseCases.ParcoursUseCases.UeDansParcours;
 using UniversiteDomain.Exceptions.UeExeptions;
+using UniversiteDomain.UseCases.ParcoursUseCases.Create;
 
 namespace UniversiteRestApi.Controllers;
 

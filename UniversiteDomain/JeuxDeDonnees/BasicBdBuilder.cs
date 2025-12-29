@@ -1,12 +1,14 @@
 using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.Entites;
-using UniversiteDomain.Entites.SecurityEntities;
+
 using UniversiteDomain.UseCases.EtudiantUseCases.Create;
 using UniversiteDomain.UseCases.NoteUseCase;
-using UniversiteDomain.UseCases.ParcoursUseCases.;
+using UniversiteDomain.UseCases.NoteUseCase.Create;
+using UniversiteDomain.UseCases.ParcoursUseCases.Create;
 using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
 using UniversiteDomain.UseCases.ParcoursUseCases.UeDansParcours;
-using UniversiteDomain.UseCases.SecurityUseCases;
+
+using UniversiteDomain.UseCases.UeUseCases.Create;
 
 namespace UniversiteDomain.JeuxDeDonnees;
 
@@ -153,7 +155,7 @@ public class BasicBdBuilder(IRepositoryFactory repositoryFactory) : BdBuilder(re
     {
         foreach( var note in _notes)
         {
-            await new CreateNoteUseCase(repositoryFactory).ExecuteAsync(note.EtudiantId,note.UeId, note.Valeur);
+            await new CreateNoteUseCase(repositoryFactory).ExecuteAsync(note.Valeur,note.EtudiantId,note.UeId);
         }
     }
     

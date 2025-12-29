@@ -1,6 +1,6 @@
 using UniversiteDomain.Exceptions.ParcoursExeptions;
 
-namespace UniversiteDomain.UseCases.ParcoursUseCases;
+namespace UniversiteDomain.UseCases.ParcoursUseCases.Create;
 using UniversiteDomain.Entites;
 using UniversiteDomain.DataAdapters;
 using UniversiteDomain.DataAdapters.DataAdaptersFactory;
@@ -49,9 +49,9 @@ public class CreateParcoursUseCase
             );
 
         // Vérifier que le nom du parcours contient au moins 3 caractères
-        if (parcours.NomParcours.Length < 3)
+        if (parcours.NomParcours.Length < 2)
             throw new InvalidNomParcoursException(
-                parcours.NomParcours + " incorrect - Le nom d'un parcours doit contenir au moins 3 caractères"
+                parcours.NomParcours + " incorrect - Le nom d'un parcours doit contenir au moins 2 caractères"
             );
 
         // Vérifier que l’année de formation est valide (par exemple entre 1 et 5 pour un master)
