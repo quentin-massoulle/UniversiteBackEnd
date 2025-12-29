@@ -5,6 +5,8 @@ using UniversiteDomain.Entites;
 using UniversiteDomain.UseCases.EtudiantUseCases.Create;
 using UniversiteDomain.UseCases.EtudiantUseCases.Delete;
 using UniversiteDomain.UseCases.EtudiantUseCases.Get;
+using UniversiteDomain.UseCases.EtudiantUseCases.Update;
+using UniversiteDomain.Exceptions.EtudiantExceptions;
 
 namespace UniversiteRestApi.Controllers
 {
@@ -51,8 +53,22 @@ namespace UniversiteRestApi.Controllers
 
         // PUT api/<EtudiantController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<Etudiant>> Put(long id, [FromBody] Etudiant etudiant)
         {
+            UpdateEtudiantUseCase uc = new UpdateEtudiantUseCase(repositoryFactory);
+            try
+            {
+                await uc.ExecuteAsync(id, etudiant.NumEtud, etudiant.Nom, etudiant.Prenom, etudiant.Email);
+                return NoContent();
+            }
+            catch (EtudiantNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception e) when (e is DuplicateNumEtudException || e is InvalidEmailException || e is DuplicateEmailException || e is InvalidNomEtudiantException)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         // DELETE api/<EtudiantController>/5
