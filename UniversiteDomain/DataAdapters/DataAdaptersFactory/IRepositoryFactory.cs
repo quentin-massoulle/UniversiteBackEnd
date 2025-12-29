@@ -11,6 +11,8 @@ public interface IRepositoryFactory
     IUeRepository UeRepository();
     
     INoteRepository NoteRepository();
+    IUniversiteRoleRepository UniversiteRoleRepository();
+    IUniversiteUserRepository UniversiteUserRepository();
     
     Task EnsureDeletedAsync();
     Task EnsureCreatedAsync();
