@@ -24,4 +24,40 @@ public class UeRepository (UniversiteDbContext context) : Repository<Ue>(context
             .Include(u => u.EnseigneeDans)
             .ToListAsync();
     }
+
+    public async Task<Ue> AddParcoursAsync(long idUe, long idParcours)
+    {
+        Ue? ue = await context.Ues.Include(u => u.EnseigneeDans).FirstOrDefaultAsync(u => u.Id == idUe);
+        Parcours? parcours = await context.Parcours.FindAsync(idParcours);
+        
+        if (ue == null || parcours == null) throw new NullReferenceException();
+        
+        if (ue.EnseigneeDans == null) ue.EnseigneeDans = new List<Parcours>();
+        
+        if (!ue.EnseigneeDans.Contains(parcours))
+        {
+            ue.EnseigneeDans.Add(parcours);
+            await context.SaveChangesAsync();
+        }
+        return ue;
+    }
+
+    public async Task<Ue> AddParcoursAsync(long idUe, long[] idParcours)
+    {
+        Ue? ue = await context.Ues.Include(u => u.EnseigneeDans).FirstOrDefaultAsync(u => u.Id == idUe);
+        if (ue == null) throw new NullReferenceException();
+        
+        if (ue.EnseigneeDans == null) ue.EnseigneeDans = new List<Parcours>();
+
+        foreach (var id in idParcours)
+        {
+            Parcours? parcours = await context.Parcours.FindAsync(id);
+            if (parcours != null && !ue.EnseigneeDans.Contains(parcours))
+            {
+                ue.EnseigneeDans.Add(parcours);
+            }
+        }
+        await context.SaveChangesAsync();
+        return ue;
+    }
 }

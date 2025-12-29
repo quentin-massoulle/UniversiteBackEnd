@@ -61,6 +61,20 @@ public class UeController(IRepositoryFactory repositoryFactory) : ControllerBase
         {
             return NotFound();
         }
+    // POST api/Ue/5/Parcours
+    [HttpPost("{id}/Parcours")]
+    public async Task<ActionResult<Ue>> AddParcours(long id, [FromBody] long parcoursId)
+    {
+        AddParcoursToUeUseCase uc = new AddParcoursToUeUseCase(repositoryFactory);
+        try
+        {
+            Ue ue = await uc.ExecuteAsync(id, parcoursId);
+            return Ok(ue);
+        }
+        catch (UeNotFoundException)
+        {
+            return NotFound();
+        }
     }
 
     // DELETE api/<UeController>/5
