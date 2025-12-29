@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace UniversiteDomain.Entites;
 
 public class Note
@@ -6,8 +8,10 @@ public class Note
     public long EtudiantId { get; set; }
     public long UeId { get; set; }
     
-    public Etudiant Etudiant { get; set; } = new();
-    public Ue Ue { get; set; } = new();
+    [JsonIgnore]
+    public Etudiant? Etudiant { get; set; }
+    [JsonIgnore]
+    public Ue? Ue { get; set; }
     
     public override string ToString()
     {

@@ -25,12 +25,18 @@ public class EtudiantRepository(UniversiteDbContext context) : Repository<Etudia
     }
     public async Task<Etudiant?> GetByIdAsync(long id)
     {
-        return await context.Etudiants.FindAsync(id); 
+        return await context.Etudiants
+            .Include(e => e.ParcoursSuivi)
+            .Include(e => e.NotesObtenues)
+            .FirstOrDefaultAsync(e => e.Id == id); 
     }
 
     public async Task<List<Etudiant>> GetAllAsync()
     {
-        return await context.Etudiants.ToListAsync();
+        return await context.Etudiants
+            .Include(e => e.ParcoursSuivi)
+            .Include(e => e.NotesObtenues)
+            .ToListAsync();
     }
     
 }

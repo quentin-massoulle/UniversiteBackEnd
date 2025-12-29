@@ -10,8 +10,8 @@ public class GetNoteUseCase(IRepositoryFactory repositoryFactory)
         return await repositoryFactory.NoteRepository().FindAllAsync();
     }
 
-    public async Task<Note?> ExecuteAsync(long id)
+    public async Task<Note?> ExecuteAsync(long etudiantId, long ueId)
     {
-        return await repositoryFactory.NoteRepository().FindAsync(id);
+        return await repositoryFactory.NoteRepository().FindAsync(etudiantId, ueId);
     }
 }

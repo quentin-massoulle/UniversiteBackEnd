@@ -7,6 +7,9 @@ using UniversiteDomain.UseCases.EtudiantUseCases.Delete;
 using UniversiteDomain.UseCases.EtudiantUseCases.Get;
 using UniversiteDomain.UseCases.EtudiantUseCases.Update;
 using UniversiteDomain.Exceptions.EtudiantExceptions;
+using UniversiteDomain.UseCases.NoteUseCase.Create;
+using UniversiteDomain.Exceptions.NoteExeptions;
+using UniversiteDomain.Exceptions.UeExeptions;
 
 namespace UniversiteRestApi.Controllers
 {
@@ -66,6 +69,23 @@ namespace UniversiteRestApi.Controllers
                 return NotFound();
             }
             catch (Exception e) when (e is DuplicateNumEtudException || e is InvalidEmailException || e is DuplicateEmailException || e is InvalidNomEtudiantException)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        // POST api/<EtudiantController>/5/Note
+        [HttpPost("{id}/Note")]
+        public async Task<ActionResult<Note>> AddNote(long id, [FromBody] Note note)
+        {
+            CreateNoteUseCase uc = new CreateNoteUseCase(repositoryFactory);
+            note.EtudiantId = id;
+            try
+            {
+                Note created = await uc.ExecuteAsync(note);
+                return CreatedAtAction("Get", "Note", new { etudiantId = created.EtudiantId, ueId = created.UeId }, created);
+            }
+            catch (Exception e) when (e is InvalidValeurNoteException || e is InvalidIdUe || e is EtudiantNotFoundException || e is DuplicateNoteUeException)
             {
                 return BadRequest(e.Message);
             }

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UniversiteDomain.Entites;
 using UniversiteEFDataProvider.Data;
@@ -10,7 +11,17 @@ public class UeRepository (UniversiteDbContext context) : Repository<Ue>(context
 {
     public async Task<Ue?> GetByIdAsync(long id)
     {
-        return await context.Ues.FindAsync(id); 
-       
+        return await context.Ues
+            .Include(u => u.Notes)
+            .Include(u => u.EnseigneeDans)
+            .FirstOrDefaultAsync(u => u.Id == id); 
+    }
+
+    public async Task<List<Ue>> GetAllAsync()
+    {
+        return await context.Ues
+            .Include(u => u.Notes)
+            .Include(u => u.EnseigneeDans)
+            .ToListAsync();
     }
 }

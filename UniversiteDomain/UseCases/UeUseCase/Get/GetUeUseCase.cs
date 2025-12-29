@@ -8,12 +8,12 @@ public class GetUeUseCase(IRepositoryFactory repositoryFactory)
 {
     public async Task<List<Ue>> ExecuteAsync()
     {
-        return await repositoryFactory.UeRepository().FindAllAsync();
+        return await repositoryFactory.UeRepository().GetAllAsync();
     }
 
     public async Task<Ue> ExecuteAsync(long id)
     {
-        Ue? ue = await repositoryFactory.UeRepository().FindAsync(id);
+        Ue? ue = await repositoryFactory.UeRepository().GetByIdAsync(id);
         if (ue == null)
         {
             throw new UeNotFoundException($"L'Unité d'Enseignement avec l'ID {id} n'a pas été trouvée.");

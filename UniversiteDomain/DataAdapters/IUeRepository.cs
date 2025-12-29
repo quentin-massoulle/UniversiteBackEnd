@@ -5,4 +5,5 @@ using UniversiteDomain.Entites;
 public interface IUeRepository : IRepository<Ue>
 {
     Task<Ue?> GetByIdAsync(long id);
+    Task<List<Ue>> GetAllAsync();
 }
