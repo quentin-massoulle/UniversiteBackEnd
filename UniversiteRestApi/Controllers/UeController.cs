@@ -67,12 +67,12 @@ public class UeController(IRepositoryFactory repositoryFactory) : ControllerBase
 
     // POST api/Ue/5/Parcours
     [HttpPost("{id}/Parcours")]
-    public async Task<ActionResult<UeDto>> AddParcours(long id, [FromBody] long parcoursId)
+    public async Task<ActionResult<UeDto>> AddParcours(long id, [FromBody] List<long> parcoursIds)
     {
         AddParcoursToUeUseCase uc = new AddParcoursToUeUseCase(repositoryFactory);
         try
         {
-            Ue ue = await uc.ExecuteAsync(id, parcoursId);
+            Ue ue = await uc.ExecuteAsync(id, parcoursIds.ToArray());
             return Ok(new UeDto().ToDto(ue));
         }
         catch (UeNotFoundException)

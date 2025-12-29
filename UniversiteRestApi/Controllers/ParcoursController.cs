@@ -9,6 +9,8 @@ using UniversiteDomain.Exceptions.ParcoursExeptions;
 using UniversiteDomain.Dtos;
 using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
 using UniversiteDomain.Exceptions.EtudiantExceptions;
+using UniversiteDomain.UseCases.ParcoursUseCases.UeDansParcours;
+using UniversiteDomain.Exceptions.UeExeptions;
 
 namespace UniversiteRestApi.Controllers;
 
@@ -89,6 +91,30 @@ public class ParcoursController(IRepositoryFactory repositoryFactory) : Controll
             return NotFound(e.Message);
         }
         catch (DuplicateInscriptionException e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    // POST api/Parcours/5/Ues
+    [HttpPost("{id}/Ues")]
+    public async Task<ActionResult<ParcoursDto>> AddUes(long id, [FromBody] List<long> ueIds)
+    {
+        AddUeDansParcoursUseCase uc = new AddUeDansParcoursUseCase(repositoryFactory);
+        try
+        {
+            Parcours parcours = await uc.ExecuteAsync(id, ueIds.ToArray());
+            return Ok(new ParcoursDto().ToDto(parcours));
+        }
+        catch (ParcoursNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (UeNotFoundException e)
+        {
+            return NotFound(e.Message);
+        }
+        catch (DuplicateUeDansParcoursException e)
         {
             return BadRequest(e.Message);
         }

@@ -74,9 +74,10 @@ public class ParcoursRepository (UniversiteDbContext context) : Repository<Parco
         ArgumentNullException.ThrowIfNull(Context.Etudiants);
         ArgumentNullException.ThrowIfNull(Context.Parcours);
         Ue ue = (await Context.Ues.FindAsync(idUe))!;
-        Parcours p = (await Context.Parcours.FindAsync(idParcours))!;
+        Parcours p = (await Context.Parcours.Include(p => p.UesEnseignees).FirstOrDefaultAsync(p => p.Id == idParcours))!;
         if (ue != null)
         {
+            p.UesEnseignees ??= new List<Ue>();
             p.UesEnseignees.Add(ue);
         }
         await Context.SaveChangesAsync();
