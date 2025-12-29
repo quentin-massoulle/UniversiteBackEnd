@@ -11,6 +11,8 @@ using UniversiteDomain.UseCases.NoteUseCase.Create;
 using UniversiteDomain.Exceptions.NoteExeptions;
 using UniversiteDomain.Exceptions.UeExeptions;
 using UniversiteDomain.Dtos;
+using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
+using UniversiteDomain.Exceptions.ParcoursExeptions;
 
 namespace UniversiteRestApi.Controllers
 {
@@ -113,6 +115,32 @@ namespace UniversiteRestApi.Controllers
         {
             DeleteEtudiantUseCase uc=new DeleteEtudiantUseCase(repositoryFactory);
             await uc.ExecuteAsync(id);
+        }
+
+        // POST api/Etudiant/5/Parcours
+        [HttpPost("{id}/Parcours")]
+        public async Task<ActionResult<EtudiantDto>> AddParcours(long id, [FromBody] long parcoursId)
+        {
+            AddEtudiantDansParcoursUseCase uc = new AddEtudiantDansParcoursUseCase(repositoryFactory);
+            try
+            {
+                // Note: The use case returns the Parcours, but we want to return the updated Etudiant.
+                // We need to fetch the student again to get the updated state with the Parcours.
+                await uc.ExecuteAsync(parcoursId, id);
+                
+                GetEtudiantUseCase getUc = new GetEtudiantUseCase(repositoryFactory);
+                Etudiant etudiant = await getUc.ExecuteAsync(id);
+                
+                return Ok(new EtudiantDto().ToDto(etudiant));
+            }
+            catch (Exception e) when (e is EtudiantNotFoundException || e is ParcoursNotFoundException)
+            {
+                return NotFound(e.Message);
+            }
+            catch (DuplicateInscriptionException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

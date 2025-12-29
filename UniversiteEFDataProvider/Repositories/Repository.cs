@@ -48,22 +48,22 @@ public abstract class Repository<T>(UniversiteDbContext context) : IRepository<T
     }
     
     // Clé primaire non composée
-    public async Task<T?> FindAsync(long id)
+    public virtual async Task<T?> FindAsync(long id)
     {
         return await Context.Set<T>().FindAsync(id);
     }
     // Clé primaire composée
-    public async Task<T?> FindAsync(params object[] keyValues)
+    public virtual async Task<T?> FindAsync(params object[] keyValues)
     {
         return await Context.Set<T>().FindAsync(keyValues);
     }
     
-    public async Task<List<T>> FindByConditionAsync(Expression<Func<T, bool>> condition)
+    public virtual async Task<List<T>> FindByConditionAsync(Expression<Func<T, bool>> condition)
     {
         return await Context.Set<T>().Where(condition).ToListAsync();
     }
 
-    public async Task<List<T>> FindAllAsync()
+    public virtual async Task<List<T>> FindAllAsync()
     {
         return await Context.Set<T>().ToListAsync();
     }

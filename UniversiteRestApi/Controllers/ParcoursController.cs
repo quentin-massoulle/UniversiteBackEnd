@@ -7,6 +7,8 @@ using UniversiteDomain.UseCases.ParcoursUseCase.Get;
 using UniversiteDomain.UseCases.ParcoursUseCase.Update;
 using UniversiteDomain.Exceptions.ParcoursExeptions;
 using UniversiteDomain.Dtos;
+using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
+using UniversiteDomain.Exceptions.EtudiantExceptions;
 
 namespace UniversiteRestApi.Controllers;
 
@@ -66,5 +68,29 @@ public class ParcoursController(IRepositoryFactory repositoryFactory) : Controll
         DeleteParcoursUseCase uc = new DeleteParcoursUseCase(repositoryFactory);
         await uc.ExecuteAsync(id);
         return NoContent();
+    }
+
+    // POST api/Parcours/5/Etudiants
+    [HttpPost("{id}/Etudiants")]
+    public async Task<ActionResult<ParcoursDto>> AddEtudiants(long id, [FromBody] List<long> etudiantIds)
+    {
+        AddEtudiantDansParcoursUseCase uc = new AddEtudiantDansParcoursUseCase(repositoryFactory);
+        try
+        {
+            Parcours parcours = await uc.ExecuteAsync(id, etudiantIds.ToArray());
+            return Ok(new ParcoursDto().ToDto(parcours));
+        }
+        catch (ParcoursNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (EtudiantNotFoundException e)
+        {
+            return NotFound(e.Message);
+        }
+        catch (DuplicateInscriptionException e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }

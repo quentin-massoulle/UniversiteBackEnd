@@ -10,14 +10,31 @@ public class ParcoursRepository (UniversiteDbContext context) : Repository<Parco
 {
     protected  readonly UniversiteDbContext Context = context;
 
+    public override async Task<List<Parcours>> FindAllAsync()
+    {
+        return await Context.Parcours
+            .Include(p => p.UesEnseignees)
+            .Include(p => p.Inscrits)
+            .ToListAsync();
+    }
+
+    public override async Task<Parcours?> FindAsync(long id)
+    {
+        return await Context.Parcours
+            .Include(p => p.UesEnseignees)
+            .Include(p => p.Inscrits)
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+
     public async Task<Parcours> AddEtudiantAsync(long idParcours, long idEtudiant)
     {
         ArgumentNullException.ThrowIfNull(Context.Etudiants);
         ArgumentNullException.ThrowIfNull(Context.Parcours);
         Etudiant e = (await Context.Etudiants.FindAsync(idEtudiant))!;
-        Parcours p = (await Context.Parcours.FindAsync(idParcours))!;
+        Parcours p = (await Context.Parcours.Include(p => p.Inscrits).FirstOrDefaultAsync(p => p.Id == idParcours))!;
         if (e != null)
         {
+            p.Inscrits ??= new List<Etudiant>();
             p.Inscrits.Add(e);
         }
         await Context.SaveChangesAsync();
