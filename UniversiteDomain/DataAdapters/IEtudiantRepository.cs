@@ -9,7 +9,4 @@ public interface IEtudiantRepository : IRepository<Etudiant>
     
     Task<List<Etudiant>> GetAllAsync();
     
-    
-    Task  DeleteAsync(long id);
-    
 }
