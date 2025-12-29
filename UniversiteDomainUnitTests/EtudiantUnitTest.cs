@@ -79,4 +79,85 @@ public class EtudiantUnitTest
         Assert.That(etudiantTeste.Email, Is.EqualTo(etudiantCree.Email));
     }
 
+    [Test]
+    public async Task GetEtudiantUseCase_ById_Success()
+    {
+        long id = 1;
+        Etudiant etudiant = new Etudiant { Id = id, NumEtud = "e1", Nom = "Nom", Prenom = "Prenom", Email = "email@test.com" };
+        
+        var mockEtudiantRepository = new Mock<IEtudiantRepository>();
+        var mockFactory = new Mock<IRepositoryFactory>();
+        
+        mockEtudiantRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync(etudiant);
+        mockFactory.Setup(f => f.EtudiantRepository()).Returns(mockEtudiantRepository.Object);
+        
+        var useCase = new UniversiteDomain.UseCases.EtudiantUseCases.Get.GetEtudiantUseCase(mockFactory.Object);
+        
+        var result = await useCase.ExecuteAsync(id);
+        
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.Id, Is.EqualTo(id));
+    }
+
+    [Test]
+    public async Task GetEtudiantUseCase_ById_NotFound()
+    {
+        long id = 1;
+        
+        var mockEtudiantRepository = new Mock<IEtudiantRepository>();
+        var mockFactory = new Mock<IRepositoryFactory>();
+        
+        mockEtudiantRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync((Etudiant?)null);
+        mockFactory.Setup(f => f.EtudiantRepository()).Returns(mockEtudiantRepository.Object);
+        
+        var useCase = new UniversiteDomain.UseCases.EtudiantUseCases.Get.GetEtudiantUseCase(mockFactory.Object);
+        
+        Assert.ThrowsAsync<UniversiteDomain.Exceptions.EtudiantExceptions.EtudiantNotFoundException>(() => useCase.ExecuteAsync(id));
+    }
+
+    [Test]
+    public async Task DeleteEtudiantUseCase_Success()
+    {
+        long id = 1;
+        Etudiant etudiant = new Etudiant { Id = id };
+        
+        var mockEtudiantRepository = new Mock<IEtudiantRepository>();
+        var mockFactory = new Mock<IRepositoryFactory>();
+        
+        mockEtudiantRepository.Setup(repo => repo.GetByIdAsync(id)).ReturnsAsync(etudiant);
+        mockFactory.Setup(f => f.EtudiantRepository()).Returns(mockEtudiantRepository.Object);
+        mockFactory.Setup(f => f.SaveChangesAsync()).Returns(Task.CompletedTask);
+        
+        var useCase = new UniversiteDomain.UseCases.EtudiantUseCases.Delete.DeleteEtudiantUseCase(mockFactory.Object);
+        
+        await useCase.ExecuteAsync(id);
+        
+        mockEtudiantRepository.Verify(repo => repo.DeleteAsync(id), Times.Once);
+        mockFactory.Verify(f => f.SaveChangesAsync(), Times.Once);
+    }
+
+    [Test]
+    public async Task UpdateEtudiantUseCase_Success()
+    {
+        long id = 1;
+        Etudiant etudiant = new Etudiant { Id = id, NumEtud = "old", Nom = "Old", Prenom = "Old", Email = "old@test.com" };
+        
+        var mockEtudiantRepository = new Mock<IEtudiantRepository>();
+        var mockFactory = new Mock<IRepositoryFactory>();
+        
+        mockEtudiantRepository.Setup(repo => repo.FindAsync(id)).ReturnsAsync(etudiant);
+        mockEtudiantRepository.Setup(repo => repo.FindByConditionAsync(It.IsAny<Expression<Func<Etudiant, bool>>>()))
+            .ReturnsAsync(new List<Etudiant>()); // No duplicates
+            
+        mockFactory.Setup(f => f.EtudiantRepository()).Returns(mockEtudiantRepository.Object);
+        mockFactory.Setup(f => f.SaveChangesAsync()).Returns(Task.CompletedTask);
+        
+        var useCase = new UniversiteDomain.UseCases.EtudiantUseCases.Update.UpdateEtudiantUseCase(mockFactory.Object);
+        
+        var result = await useCase.ExecuteAsync(id, "new", "NewNom", "NewPrenom", "new@test.com");
+        
+        Assert.That(result.NumEtud, Is.EqualTo("new"));
+        mockEtudiantRepository.Verify(repo => repo.UpdateAsync(etudiant), Times.Once);
+        mockFactory.Verify(f => f.SaveChangesAsync(), Times.Once);
+    }
 }
