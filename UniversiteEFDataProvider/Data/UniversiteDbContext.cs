@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UniversiteDomain.Entites;
-using UniversiteEFDataProvider.Entites;
 
 namespace UniversiteEFDataProvider.Data;
  
-public class UniversiteDbContext : IdentityDbContext<UniversiteUser, UniversiteRole, string>
+public class UniversiteDbContext : DbContext
 {
     public static readonly ILoggerFactory consoleLogger = LoggerFactory.Create(builder => { builder.AddConsole(); });
     
@@ -15,7 +13,7 @@ public class UniversiteDbContext : IdentityDbContext<UniversiteUser, UniversiteR
     {
     }
  
-    public UniversiteDbContext()
+    public UniversiteDbContext():base()
     {
     }
     

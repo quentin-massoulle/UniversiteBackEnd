@@ -4,8 +4,6 @@ using UniversiteDomain.DataAdapters.DataAdaptersFactory;
 using UniversiteDomain.JeuxDeDonnees;
 using UniversiteEFDataProvider.Data;
 using UniversiteEFDataProvider.RepositoryFactories;
-using Microsoft.AspNetCore.Identity;
-using UniversiteEFDataProvider.Entites;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,12 +24,7 @@ String connectionString = builder.Configuration.GetConnectionString("MySqlConnec
 // Ce contexte est rajouté dans les services de l'application, toujours prêt à être utilisé par injection de dépendances
 builder.Services.AddDbContext<UniversiteDbContext>(options =>options.UseMySQL(connectionString));
 // La factory est rajoutée dans les services de l'application, toujours prête à être utilisée par injection de dépendances
-// La factory est rajoutée dans les services de l'application, toujours prête à être utilisée par injection de dépendances
 builder.Services.AddScoped<IRepositoryFactory, RepositoryFactory>();
-
-builder.Services.AddIdentity<UniversiteUser, UniversiteRole>()
-    .AddEntityFrameworkStores<UniversiteDbContext>()
-    .AddDefaultTokenProviders();
 
 // Création de tous les services qui sont stockés dans app
 // app contient tous les aobjets de notre application

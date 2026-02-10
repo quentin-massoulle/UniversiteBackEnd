@@ -1,21 +1,17 @@
-using Microsoft.AspNetCore.Identity;
 using UniversiteDomain.Entites;
 using UniversiteEFDataProvider.Data;
 using UniversiteDomain.DataAdapters;
 using UniversiteDomain.DataAdapters.DataAdaptersFactory;
-using UniversiteEFDataProvider.Entites;
 using UniversiteEFDataProvider.Repositories;
 
 namespace UniversiteEFDataProvider.RepositoryFactories;
 
-public class RepositoryFactory (UniversiteDbContext context, UserManager<UniversiteUser> userManager, RoleManager<UniversiteRole> roleManager): IRepositoryFactory
+public class RepositoryFactory (UniversiteDbContext context): IRepositoryFactory
 {
     private IParcoursRepository? _parcours;
     private IEtudiantRepository? _etudiants;
     private IUeRepository? _ues;
     private INoteRepository? _notes;
-    private IUniversiteRoleRepository? _roles;
-    private IUniversiteUserRepository? _users;
     
     public IParcoursRepository ParcoursRepository()
     {
@@ -51,36 +47,19 @@ public class RepositoryFactory (UniversiteDbContext context, UserManager<Univers
             _notes = new NoteRepository(context ?? throw new InvalidOperationException());
         }
         return _notes;
-    }
 
-    public IUniversiteRoleRepository UniversiteRoleRepository()
-    {
-        if (_roles == null)
-        {
-            _roles = new UniversiteRoleRepository(roleManager, context);
-        }
-        return _roles;
-    }
-
-    public IUniversiteUserRepository UniversiteUserRepository()
-    {
-        if (_users == null)
-        {
-            _users = new UniversiteUserRepository(userManager, context);
-        }
-        return _users;
     }
        
     public async Task SaveChangesAsync()
     {
-        await context.SaveChangesAsync();
+        context.SaveChangesAsync().Wait();
     }
     public async Task EnsureCreatedAsync()
     {
-        await context.Database.EnsureCreatedAsync();
+        context.Database.EnsureCreated();
     }
     public async Task EnsureDeletedAsync()
     {
-        await context.Database.EnsureDeletedAsync();
+        context.Database.EnsureDeleted();
     }
 }
