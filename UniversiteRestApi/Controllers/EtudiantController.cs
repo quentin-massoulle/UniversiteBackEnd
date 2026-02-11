@@ -24,151 +24,143 @@ namespace UniversiteRestApi.Controllers
     [ApiController]
     public class EtudiantController(IRepositoryFactory repositoryFactory) : ControllerBase
     {
-        // GET: api/<EtudiantController>
+        
+        // GET: api/Etudiant
         [HttpGet]
         public async Task<ActionResult<List<EtudiantDto>>> GetLesEtudiant()
         {
-            GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
-            
-            // On récupère l'étudiant via le UseCase
-            List<Etudiant> etudiants = await uc.ExecuteAsync();
-
-            return Ok(etudiants.Select(e => new EtudiantDto().ToDto(e)));
+            try 
+            {
+                CheckSecu(out _, out _, out _);
+                GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
+                List<Etudiant> etudiants = await uc.ExecuteAsync();
+                return Ok(etudiants.Select(e => new EtudiantDto().ToDto(e)));
+            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
         }
 
         
-        // GET api/<EtudiantApi>/5
+        // GET api/Etudiant/5
         [HttpGet("{id}")]
         public async Task<ActionResult<EtudiantDto>> GetUnEtudiant(long id)
         {
-            GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
-            
-            // On récupère l'étudiant via le UseCase
             try 
             {
+                CheckSecu(out _, out _, out _);
+                GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
                 Etudiant etudiant = await uc.ExecuteAsync(id);
                 return Ok(new EtudiantDto().ToDto(etudiant));
             }
-            catch (Exception)
-            {
-                return NotFound();
-            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
+            catch (Exception) { return NotFound(); }
         }
 
+        // POST api/Etudiant
         [HttpPost]
         public async Task<ActionResult<EtudiantDto>> PostAsync([FromBody] EtudiantDto etudiantDto)
         {
-            CreateEtudiantUseCase createEtudiantUc = new CreateEtudiantUseCase(repositoryFactory);
-            CreateUniversiteUserUseCase createUserUc = new CreateUniversiteUserUseCase(repositoryFactory);
-
-            string role="";
-            string email="";
-            IUniversiteUser user = null;
-            CheckSecu(out role, out email, out user);
-            if (!createUserUc.IsAuthorized(role) || !createUserUc.IsAuthorized(role)) return Unauthorized();
-    
-            Etudiant etud = etudiantDto.ToEntity();
-    
             try
             {
+                string role;
+                string email;
+                IUniversiteUser user;
+                CheckSecu(out role, out email, out user);
+
+                CreateEtudiantUseCase createEtudiantUc = new CreateEtudiantUseCase(repositoryFactory);
+                CreateUniversiteUserUseCase createUserUc = new CreateUniversiteUserUseCase(repositoryFactory);
+
+                // Vérification si le rôle a le droit de créer (Généralement Admin)
+                if (!createUserUc.IsAuthorized(role)) return Forbid();
+
+                Etudiant etud = etudiantDto.ToEntity();
                 etud = await createEtudiantUc.ExecuteAsync(etud);
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError(nameof(e), e.Message);
-                return ValidationProblem();
-            }
 
-            try
-            {
-                // Création du user associé
-                user = new UniversiteUser { UserName = etudiantDto.Email, Email = etudiantDto.Email, Etudiant = etud };
-                // Un créé l'utilisateur avec un mot de passe par défaut et un rôle étudiant
-                await createUserUc.ExecuteAsync(etud.Email, etud.Email, "Miage2025#", Roles.Etudiant, etud); 
-            }
-            catch (Exception e)
-            {
-                // On supprime l'étudiant que l'on vient de créer. Sinon on a un étudiant mais pas de user associé
-                await new DeleteEtudiantUseCase(repositoryFactory).ExecuteAsync(etud.Id);
-                ModelState.AddModelError(nameof(e), e.Message);
-                return ValidationProblem();
-            }
+                try
+                {
+                    await createUserUc.ExecuteAsync(etud.Email, etud.Email, "Miage2025#", Roles.Etudiant, etud); 
+                }
+                catch (Exception e)
+                {
+                    await new DeleteEtudiantUseCase(repositoryFactory).ExecuteAsync(etud.Id);
+                    ModelState.AddModelError("UserCreation", e.Message);
+                    return ValidationProblem();
+                }
 
-            EtudiantDto dto = new EtudiantDto().ToDto(etud);
-            return CreatedAtAction(nameof(GetUnEtudiant), new { id = dto.Id }, dto);
+                EtudiantDto dto = new EtudiantDto().ToDto(etud);
+                return CreatedAtAction(nameof(GetUnEtudiant), new { id = dto.Id }, dto);
+            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
         }
 
-        // PUT api/<EtudiantController>/5
+        // PUT api/Etudiant/5
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(long id, [FromBody] EtudiantDto dto)
         {
-            UpdateEtudiantUseCase uc = new UpdateEtudiantUseCase(repositoryFactory);
             try
             {
+                CheckSecu(out string role, out _, out _);
+                // Optionnel : Seul un admin ou l'étudiant lui-même peut modifier ?
+                // Ici on applique une sécurité de base
+                
+                UpdateEtudiantUseCase uc = new UpdateEtudiantUseCase(repositoryFactory);
                 await uc.ExecuteAsync(id, dto.NumEtud, dto.Nom, dto.Prenom, dto.Email);
                 return NoContent();
             }
-            catch (EtudiantNotFoundException)
-            {
-                return NotFound();
-            }
-            catch (Exception e) when (e is DuplicateNumEtudException || e is InvalidEmailException || e is DuplicateEmailException || e is InvalidNomEtudiantException)
-            {
-                return BadRequest(e.Message);
-            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
+            catch (EtudiantNotFoundException) { return NotFound(); }
+            catch (Exception e) { return BadRequest(e.Message); }
         }
 
-        // POST api/<EtudiantController>/5/Note
+        // POST api/Etudiant/5/Note
         [HttpPost("{id}/Note")]
         public async Task<ActionResult<NoteDto>> AjouterNoteEtudiant(long id, [FromBody] NoteDto dto)
         {
-            CreateNoteUseCase uc = new CreateNoteUseCase(repositoryFactory);
-            Note note = dto.ToEntity();
-            note.EtudiantId = id;
-            
             try
             {
+                CheckSecu(out _, out _, out _);
+                CreateNoteUseCase uc = new CreateNoteUseCase(repositoryFactory);
+                Note note = dto.ToEntity();
+                note.EtudiantId = id;
+                
                 Note created = await uc.ExecuteAsync(note);
                 return CreatedAtAction("Get", "Note", new { etudiantId = created.EtudiantId, ueId = created.UeId }, new NoteDto().ToDto(created));
             }
-            catch (Exception e) when (e is InvalidValeurNoteException || e is InvalidIdUe || e is EtudiantNotFoundException || e is DuplicateNoteUeException)
-            {
-                return BadRequest(e.Message);
-            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
+            catch (Exception e) { return BadRequest(e.Message); }
         }
 
-        // DELETE api/<EtudiantController>/5
+        // DELETE api/Etudiant/5
         [HttpDelete("{id}")]
-        public async Task DeleteUnEtudiant(long id)
+        public async Task<ActionResult> DeleteUnEtudiant(long id)
         {
-            DeleteEtudiantUseCase uc=new DeleteEtudiantUseCase(repositoryFactory);
-            await uc.ExecuteAsync(id);
+            try
+            {
+                CheckSecu(out string role, out _, out _);
+                // On pourrait vérifier ici si role == Roles.Admin
+                
+                DeleteEtudiantUseCase uc = new DeleteEtudiantUseCase(repositoryFactory);
+                await uc.ExecuteAsync(id);
+                return NoContent();
+            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
         }
 
         // POST api/Etudiant/5/Parcours
         [HttpPost("{id}/Parcours")]
         public async Task<ActionResult<EtudiantDto>> AddParcoursEtudiant(long id, [FromBody] long parcoursId)
         {
-            AddEtudiantDansParcoursUseCase uc = new AddEtudiantDansParcoursUseCase(repositoryFactory);
             try
             {
-                // Note: The use case returns the Parcours, but we want to return the updated Etudiant.
-                // We need to fetch the student again to get the updated state with the Parcours.
+                CheckSecu(out _, out _, out _);
+                AddEtudiantDansParcoursUseCase uc = new AddEtudiantDansParcoursUseCase(repositoryFactory);
                 await uc.ExecuteAsync(parcoursId, id);
                 
                 GetEtudiantUseCase getUc = new GetEtudiantUseCase(repositoryFactory);
                 Etudiant etudiant = await getUc.ExecuteAsync(id);
-                
                 return Ok(new EtudiantDto().ToDto(etudiant));
             }
-            catch (Exception e) when (e is EtudiantNotFoundException || e is ParcoursNotFoundException)
-            {
-                return NotFound(e.Message);
-            }
-            catch (DuplicateInscriptionException e)
-            {
-                return BadRequest(e.Message);
-            }
+            catch (UnauthorizedAccessException) { return Unauthorized(); }
+            catch (Exception e) { return BadRequest(e.Message); }
         }
         
         private void CheckSecu(out string role, out string email, out IUniversiteUser user)
