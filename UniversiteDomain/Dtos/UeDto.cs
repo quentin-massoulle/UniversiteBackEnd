@@ -10,6 +10,7 @@ public class UeDto
 
     public UeDto ToDto(Ue ue)
     {
+        if (ue == null) return null;
         Id = ue.Id;
         NumeroUe = ue.NumeroUe;
         Intitule = ue.Intitule;

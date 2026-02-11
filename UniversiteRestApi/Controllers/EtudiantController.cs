@@ -8,14 +8,11 @@ using UniversiteDomain.UseCases.EtudiantUseCases.Get;
 using UniversiteDomain.UseCases.EtudiantUseCases.Update;
 using UniversiteDomain.Exceptions.EtudiantExceptions;
 using UniversiteDomain.UseCases.NoteUseCase.Create;
-using UniversiteDomain.Exceptions.NoteExeptions;
-using UniversiteDomain.Exceptions.UeExeptions;
 using UniversiteDomain.Dtos;
 using UniversiteDomain.UseCases.ParcoursUseCases.EtudiantDansParcours;
-using UniversiteDomain.Exceptions.ParcoursExeptions;
 using UniversiteDomain.UseCases.SecurityUseCases.Create;
 using UniversiteDomain.UseCases.SecurityUseCases.Get;
-using UniversiteEFDataProvider.Entities;
+
 
 
 namespace UniversiteRestApi.Controllers
@@ -40,19 +37,39 @@ namespace UniversiteRestApi.Controllers
         }
 
         
-        // GET api/Etudiant/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EtudiantDto>> GetUnEtudiant(long id)
+        // GET api/<EtudiantController>/complet/5
+        [HttpGet("complet/{id}")]
+        public async Task<ActionResult<EtudiantCompletDto>> GetUnEtudiant(long id)
         {
-            try 
+            // Identification et authentification
+            string role="";
+            string email="";
+            IUniversiteUser user = null;
+            try
             {
-                CheckSecu(out _, out _, out _);
-                GetEtudiantUseCase uc = new GetEtudiantUseCase(repositoryFactory);
-                Etudiant etudiant = await uc.ExecuteAsync(id);
-                return Ok(new EtudiantDto().ToDto(etudiant));
+                CheckSecu(out role, out email, out user);
             }
-            catch (UnauthorizedAccessException) { return Unauthorized(); }
-            catch (Exception) { return NotFound(); }
+            catch (Exception e)
+            {
+                return Unauthorized();
+            }
+    
+            GetEtudiantCompletUseCase uc = new GetEtudiantCompletUseCase(repositoryFactory);
+            // Autorisation
+            // On vérifie si l'utilisateur connecté a le droit d'accéder à la ressource
+            if (!uc.IsAuthorized(role, user, id)) return Unauthorized();
+            Etudiant? etud;
+            try
+            {
+                etud = await uc.ExecuteAsync(id);
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError(nameof(e), e.Message);
+                return ValidationProblem();
+            }
+            if (etud == null) return NotFound();
+            return new EtudiantCompletDto().ToDto(etud);
         }
 
         // POST api/Etudiant

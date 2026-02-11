@@ -12,20 +12,9 @@ public class ParcoursDto
 
     public ParcoursDto ToDto(Parcours parcours)
     {
-        Id = parcours.Id;
-        NomParcours = parcours.NomParcours;
-        AnneeFormation = parcours.AnneeFormation;
-        
-        if (parcours.Inscrits != null)
-        {
-            Inscrits = parcours.Inscrits.Select(e => new EtudiantDto().ToDto(e)).ToList();
-        }
-        
-        if (parcours.UesEnseignees != null)
-        {
-            UesEnseignees = parcours.UesEnseignees.Select(u => new UeDto().ToDto(u)).ToList();
-        }
-        
+        this.Id = parcours.Id;
+        this.NomParcours = parcours.NomParcours;
+        this.AnneeFormation = parcours.AnneeFormation;
         return this;
     }
 
