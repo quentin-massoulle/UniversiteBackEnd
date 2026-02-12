@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="" />
+    <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/UeUseCases/Csv/GenerateCsvNotesUseCaseTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/GenerateCsvNotesUseCaseTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/UeUseCases/Csv/SaisirNotesUseCaseTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/SaisirNotesUseCaseTests.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,6 +95,7 @@
     <setting file="file://$PROJECT_DIR$/UniversiteEFDataProvider/RepositoryFactories/RepositoryFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteRestApi/Controllers/AccountController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteRestApi/Controllers/EtudiantController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/quentin/Bureau/dev/cours/ASI/teste/UniversiteBackEnd/UniversiteRestApi/Controllers/UeController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
