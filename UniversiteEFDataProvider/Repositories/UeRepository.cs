@@ -69,4 +69,22 @@ public class UeRepository (UniversiteDbContext context) : Repository<Ue>(context
             .Include(u => u.Notes)
             .FirstOrDefaultAsync(u => u.Id == idUe);
     }
+
+    public async Task<Ue?> FindUeCompletByNumeroAsync(string numeroUe)
+    {
+        return await context.Ues
+            .Include(u => u.EnseigneeDans)
+            .ThenInclude(p => p.Inscrits)
+            .Include(u => u.Notes)
+            .FirstOrDefaultAsync(u => u.NumeroUe == numeroUe);
+    }
+
+    public async Task<List<Ue>> FindAllUesCompletAsync()
+    {
+        return await context.Ues
+            .Include(u => u.EnseigneeDans)
+            .ThenInclude(p => p.Inscrits)
+            .Include(u => u.Notes)
+            .ToListAsync();
+    }
 }

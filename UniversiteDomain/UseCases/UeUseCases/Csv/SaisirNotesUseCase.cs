@@ -3,6 +3,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using UniversiteDomain.DataAdapters;
 using UniversiteDomain.DataAdapters.DataAdaptersFactory;
+using UniversiteDomain.Dtos;
 using UniversiteDomain.Entites;
 using UniversiteDomain.Exceptions.UeExeptions;
 
@@ -10,14 +11,11 @@ namespace UniversiteDomain.UseCases.UeUseCases.Csv;
 
 public class SaisirNotesUseCase(IRepositoryFactory repositoryFactory)
 {
-    public async Task ExecuteAsync(long idUe, Stream csvStream)
+    public async Task ExecuteAsync(Stream csvStream)
     {
         var ueRepository = repositoryFactory.UeRepository();
         var noteRepository = repositoryFactory.NoteRepository();
         
-        var ue = await ueRepository.FindUeCompletAsync(idUe);
-        if (ue == null) throw new UeNotFoundException();
-
         using var reader = new StreamReader(csvStream);
         using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
         {
@@ -26,8 +24,24 @@ public class SaisirNotesUseCase(IRepositoryFactory repositoryFactory)
             HeaderValidated = null
         });
 
+        // Lecture des records en mémoire pour traitement
         var records = csv.GetRecords<NoteCsvDto>().ToList();
         
+        if (!records.Any()) return; // Rien à faire
+
+        // On prend le NumeroUe du premier enregistrement (on suppose que tout le fichier concerne la même UE)
+        var numeroUe = records.First().NumeroUe;
+        if (string.IsNullOrEmpty(numeroUe)) throw new ArgumentException("Le Numéro UE est manquant dans le fichier CSV.");
+
+        // Vérification de cohérence (optionnel : on peut jeter une erreur si le fichier contient plusieurs UEs différentes)
+        if (records.Any(r => r.NumeroUe != numeroUe))
+        {
+            throw new ArgumentException("Le fichier CSV doit contenir des notes pour une seule et même UE.");
+        }
+
+        var ue = await ueRepository.FindUeCompletByNumeroAsync(numeroUe);
+        if (ue == null) throw new UeNotFoundException();
+
         // Tous les étudiants valides de l'UE (pour validation)
         // Map NumEtud -> EtudiantId pour lookup rapide
         var etudiantsMap = ue.EnseigneeDans?
@@ -42,7 +56,7 @@ public class SaisirNotesUseCase(IRepositoryFactory repositoryFactory)
             // Validation basique
             if (!etudiantsMap.ContainsKey(record.NumEtud))
             {
-               throw new ArgumentException($"L'étudiant {record.NumEtud} n'est pas inscrit dans un parcours contenant cette UE.");
+               throw new ArgumentException($"L'étudiant {record.NumEtud} n'est pas inscrit dans un parcours contenant cette UE ({numeroUe}).");
             }
 
             if (record.Note.HasValue)
@@ -66,16 +80,11 @@ public class SaisirNotesUseCase(IRepositoryFactory repositoryFactory)
                 {
                     var newNote = new Note
                     {
-                        UeId = idUe,
+                        UeId = ue.Id,
                         EtudiantId = studentId,
                         Valeur = record.Note.Value
                     };
-                    // We need to add this new note. Since we have the repository factory, we can use the repo.
-                    // But standard way is context.Notes.Add(newNote). Repository usually hides this.
-                    // INoteRepository should have CreateAsync or similar? 
-                    // Let's rely on INoteRepository.SaveNotesAsync for batch, or just add to keys.
-                    // Actually, if we add it to ue.Notes collection, EF might track it if relationship is set up.
-                    // But 'ue.Notes' is ICollection. 
+                    
                     if (ue.Notes == null) ue.Notes = new List<Note>();
                     ue.Notes.Add(newNote);
                 }

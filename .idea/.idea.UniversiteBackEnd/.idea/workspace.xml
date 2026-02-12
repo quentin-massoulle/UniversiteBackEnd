@@ -10,8 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/UeUseCases/Csv/GenerateCsvNotesUseCaseTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/GenerateCsvNotesUseCaseTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomainUnitTests/UeUseCases/Csv/SaisirNotesUseCaseTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomainUnitTests/SaisirNotesUseCaseTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/Dtos/NoteCsvDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/Dtos/NoteCsvDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCases/Csv/GenerateCsvNotesUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCases/Csv/GenerateCsvNotesUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCases/Csv/SaisirNotesUseCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/UeUseCases/Csv/SaisirNotesUseCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/UeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/UeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UniversiteRestApi/Controllers/SaisieNotesController.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +84,7 @@
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Create/CreateUniversiteUserUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Get/FindUniversiteUserByEmailUseCase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Get/IsInRoleUseCase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/quentin/Bureau/dev/cours/ASI/teste/UniversiteBackEnd/UniversiteDomain/UseCases/UeUseCases/Csv/GenerateCsvNotesUseCase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomain/Util/CheckEmail.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/EtudiantUnitTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UniversiteDomainUnitTests/ParcoursUnitTest.cs" root0="FORCE_HIGHLIGHTING" />

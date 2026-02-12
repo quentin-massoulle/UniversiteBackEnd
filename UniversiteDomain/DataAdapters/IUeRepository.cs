@@ -9,4 +9,6 @@ public interface IUeRepository : IRepository<Ue>
     Task<Ue> AddParcoursAsync(long idUe, long idParcours);
     Task<Ue> AddParcoursAsync(long idUe, long[] idParcours);
     Task<Ue?> FindUeCompletAsync(long idUe);
+    Task<Ue?> FindUeCompletByNumeroAsync(string numeroUe);
+    Task<List<Ue>> FindAllUesCompletAsync();
 }

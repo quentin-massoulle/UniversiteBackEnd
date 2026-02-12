@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@localhost">
+<dataSource name="universitedb@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.54">
     <root id="1">
       <DefaultAuthPlugin>caching_sha2_password</DefaultAuthPlugin>
@@ -179,7 +179,7 @@ laravel|schema||user||TRIGGER|G
 laravel|schema||user||UPDATE|G
 performance_schema|schema||mysql.session|localhost|SELECT|G
 sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
-      <ServerVersion>8.0.42</ServerVersion>
+      <ServerVersion>8.0.43</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
@@ -1097,8 +1097,9 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="293" parent="1" name="universitedb">
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
+      <Current>1</Current>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2025-11-20.20:47:49</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-02-12.11:46:36</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="294" parent="1" name="mysql.infoschema">
@@ -1118,5 +1119,582 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Host>localhost</Host>
     </user>
     <user id="299" parent="1" name="user"/>
+    <table id="300" parent="293" name="AspNetRoleClaims">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="301" parent="293" name="AspNetRoles">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="302" parent="293" name="AspNetUserClaims">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="303" parent="293" name="AspNetUserLogins">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="304" parent="293" name="AspNetUserRoles">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="305" parent="293" name="AspNetUserTokens">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="306" parent="293" name="AspNetUsers">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="307" parent="293" name="Etudiants">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="308" parent="293" name="Notes">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="309" parent="293" name="Parcours">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="310" parent="293" name="ParcoursUe">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="311" parent="293" name="Ues">
+      <DetailsLevel>3</DetailsLevel>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="312" parent="300" name="Id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="313" parent="300" name="RoleId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="314" parent="300" name="ClaimType">
+      <Position>3</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="315" parent="300" name="ClaimValue">
+      <Position>4</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <foreign-key id="316" parent="300" name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>AspNetRoles</RefTableName>
+    </foreign-key>
+    <index id="317" parent="300" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="318" parent="300" name="IX_AspNetRoleClaims_RoleId">
+      <ColNames>RoleId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="319" parent="300" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="320" parent="301" name="Id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="321" parent="301" name="Discriminator">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(21)|0s</StoredType>
+    </column>
+    <column id="322" parent="301" name="Name">
+      <Position>3</Position>
+      <StoredType>varchar(256)|0s</StoredType>
+    </column>
+    <column id="323" parent="301" name="NormalizedName">
+      <Position>4</Position>
+      <StoredType>varchar(256)|0s</StoredType>
+    </column>
+    <column id="324" parent="301" name="ConcurrencyStamp">
+      <Position>5</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <index id="325" parent="301" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="326" parent="301" name="RoleNameIndex">
+      <ColNames>NormalizedName</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="327" parent="301" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="328" parent="301" name="RoleNameIndex">
+      <UnderlyingIndexName>RoleNameIndex</UnderlyingIndexName>
+    </key>
+    <column id="329" parent="302" name="Id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="330" parent="302" name="UserId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="331" parent="302" name="ClaimType">
+      <Position>3</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="332" parent="302" name="ClaimValue">
+      <Position>4</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <foreign-key id="333" parent="302" name="FK_AspNetUserClaims_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <index id="334" parent="302" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="335" parent="302" name="IX_AspNetUserClaims_UserId">
+      <ColNames>UserId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="336" parent="302" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="337" parent="303" name="LoginProvider">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="338" parent="303" name="ProviderKey">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="339" parent="303" name="ProviderDisplayName">
+      <Position>3</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="340" parent="303" name="UserId">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <foreign-key id="341" parent="303" name="FK_AspNetUserLogins_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <index id="342" parent="303" name="PRIMARY">
+      <ColNames>LoginProvider
+ProviderKey</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="343" parent="303" name="IX_AspNetUserLogins_UserId">
+      <ColNames>UserId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="344" parent="303" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="345" parent="304" name="UserId">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="346" parent="304" name="RoleId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <foreign-key id="347" parent="304" name="FK_AspNetUserRoles_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <foreign-key id="348" parent="304" name="FK_AspNetUserRoles_AspNetRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>AspNetRoles</RefTableName>
+    </foreign-key>
+    <index id="349" parent="304" name="PRIMARY">
+      <ColNames>UserId
+RoleId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="350" parent="304" name="IX_AspNetUserRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="351" parent="304" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="352" parent="305" name="UserId">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="353" parent="305" name="LoginProvider">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="354" parent="305" name="Name">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="355" parent="305" name="Value">
+      <Position>4</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <foreign-key id="356" parent="305" name="FK_AspNetUserTokens_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>AspNetUsers</RefTableName>
+    </foreign-key>
+    <index id="357" parent="305" name="PRIMARY">
+      <ColNames>UserId
+LoginProvider
+Name</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="358" parent="305" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="359" parent="306" name="Id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="360" parent="306" name="EtudiantId">
+      <Position>2</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="361" parent="306" name="UserName">
+      <Position>3</Position>
+      <StoredType>varchar(256)|0s</StoredType>
+    </column>
+    <column id="362" parent="306" name="NormalizedUserName">
+      <Position>4</Position>
+      <StoredType>varchar(256)|0s</StoredType>
+    </column>
+    <column id="363" parent="306" name="Email">
+      <Position>5</Position>
+      <StoredType>varchar(256)|0s</StoredType>
+    </column>
+    <column id="364" parent="306" name="NormalizedEmail">
+      <Position>6</Position>
+      <StoredType>varchar(256)|0s</StoredType>
+    </column>
+    <column id="365" parent="306" name="EmailConfirmed">
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <column id="366" parent="306" name="PasswordHash">
+      <Position>8</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="367" parent="306" name="SecurityStamp">
+      <Position>9</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="368" parent="306" name="ConcurrencyStamp">
+      <Position>10</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="369" parent="306" name="PhoneNumber">
+      <Position>11</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="370" parent="306" name="PhoneNumberConfirmed">
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <column id="371" parent="306" name="TwoFactorEnabled">
+      <NotNull>1</NotNull>
+      <Position>13</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <column id="372" parent="306" name="LockoutEnd">
+      <Position>14</Position>
+      <StoredType>datetime|0s</StoredType>
+    </column>
+    <column id="373" parent="306" name="LockoutEnabled">
+      <NotNull>1</NotNull>
+      <Position>15</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <column id="374" parent="306" name="AccessFailedCount">
+      <NotNull>1</NotNull>
+      <Position>16</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <foreign-key id="375" parent="306" name="FK_AspNetUsers_Etudiants_EtudiantId">
+      <ColNames>EtudiantId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Etudiants</RefTableName>
+    </foreign-key>
+    <index id="376" parent="306" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="377" parent="306" name="IX_AspNetUsers_EtudiantId">
+      <ColNames>EtudiantId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="378" parent="306" name="UserNameIndex">
+      <ColNames>NormalizedUserName</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="379" parent="306" name="EmailIndex">
+      <ColNames>NormalizedEmail</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="380" parent="306" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="381" parent="306" name="IX_AspNetUsers_EtudiantId">
+      <UnderlyingIndexName>IX_AspNetUsers_EtudiantId</UnderlyingIndexName>
+    </key>
+    <key id="382" parent="306" name="UserNameIndex">
+      <UnderlyingIndexName>UserNameIndex</UnderlyingIndexName>
+    </key>
+    <column id="383" parent="307" name="Id">
+      <AutoIncrement>7</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="384" parent="307" name="NumEtud">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="385" parent="307" name="Nom">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="386" parent="307" name="Prenom">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="387" parent="307" name="Email">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="388" parent="307" name="ParcoursSuiviId">
+      <Position>6</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <foreign-key id="389" parent="307" name="FK_Etudiants_Parcours_ParcoursSuiviId">
+      <ColNames>ParcoursSuiviId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Parcours</RefTableName>
+    </foreign-key>
+    <index id="390" parent="307" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="391" parent="307" name="IX_Etudiants_ParcoursSuiviId">
+      <ColNames>ParcoursSuiviId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="392" parent="307" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="393" parent="308" name="EtudiantId">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="394" parent="308" name="UeId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="395" parent="308" name="Valeur">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>float|0s</StoredType>
+    </column>
+    <foreign-key id="396" parent="308" name="FK_Notes_Etudiants_EtudiantId">
+      <ColNames>EtudiantId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Etudiants</RefTableName>
+    </foreign-key>
+    <foreign-key id="397" parent="308" name="FK_Notes_Ues_UeId">
+      <ColNames>UeId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Ues</RefTableName>
+    </foreign-key>
+    <index id="398" parent="308" name="PRIMARY">
+      <ColNames>EtudiantId
+UeId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="399" parent="308" name="IX_Notes_UeId">
+      <ColNames>UeId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="400" parent="308" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="401" parent="309" name="Id">
+      <AutoIncrement>5</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="402" parent="309" name="NomParcours">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="403" parent="309" name="AnneeFormation">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <index id="404" parent="309" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="405" parent="309" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="406" parent="310" name="EnseigneeDansId">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="407" parent="310" name="UesEnseigneesId">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <foreign-key id="408" parent="310" name="FK_ParcoursUe_Parcours_EnseigneeDansId">
+      <ColNames>EnseigneeDansId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Parcours</RefTableName>
+    </foreign-key>
+    <foreign-key id="409" parent="310" name="FK_ParcoursUe_Ues_UesEnseigneesId">
+      <ColNames>UesEnseigneesId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Ues</RefTableName>
+    </foreign-key>
+    <index id="410" parent="310" name="PRIMARY">
+      <ColNames>EnseigneeDansId
+UesEnseigneesId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="411" parent="310" name="IX_ParcoursUe_UesEnseigneesId">
+      <ColNames>UesEnseigneesId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="412" parent="310" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="413" parent="311" name="Id">
+      <AutoIncrement>5</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="414" parent="311" name="NumeroUe">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <column id="415" parent="311" name="Intitule">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StoredType>longtext|0s</StoredType>
+    </column>
+    <index id="416" parent="311" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="417" parent="311" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>
