@@ -8,4 +8,5 @@ public interface IUeRepository : IRepository<Ue>
     Task<List<Ue>> GetAllAsync();
     Task<Ue> AddParcoursAsync(long idUe, long idParcours);
     Task<Ue> AddParcoursAsync(long idUe, long[] idParcours);
+    Task<Ue?> FindUeCompletAsync(long idUe);
 }

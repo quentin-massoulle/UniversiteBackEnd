@@ -60,4 +60,13 @@ public class UeRepository (UniversiteDbContext context) : Repository<Ue>(context
         await context.SaveChangesAsync();
         return ue;
     }
+
+    public async Task<Ue?> FindUeCompletAsync(long idUe)
+    {
+        return await context.Ues
+            .Include(u => u.EnseigneeDans)
+            .ThenInclude(p => p.Inscrits)
+            .Include(u => u.Notes)
+            .FirstOrDefaultAsync(u => u.Id == idUe);
+    }
 }

@@ -9,35 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUniversiteRoleRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/IUniversiteUserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Dtos/Securite/LoginDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/IUniversiteRole.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/IUniversiteUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/Entites/Roles.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Create/CreateUniversiteRoleUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Create/CreateUniversiteUserUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Get/FindUniversiteUserByEmailUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteDomain/UseCases/SecurityUseCases/Get/IsInRoleUseCase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Entities/UniversiteRole.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Entities/UniversiteUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/UniversiteRoleRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Repositories/UniversiteUserRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UniversiteRestApi/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.UniversiteBackEnd/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/DataAdaptersFactory/IRepositoryFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/DataAdapters/DataAdaptersFactory/IRepositoryFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/JeuxDeDonnees/BasicBdBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/JeuxDeDonnees/BasicBdBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/JeuxDeDonnees/BdBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/JeuxDeDonnees/BdBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteDomain/UniversiteDomain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteDomain/UniversiteDomain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteEFDataProvider/Data/UniversiteDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/Data/UniversiteDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteEFDataProvider/RepositoryFactories/RepositoryFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/RepositoryFactories/RepositoryFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteEFDataProvider/UniversiteEFDataProvider.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteEFDataProvider/UniversiteEFDataProvider.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteRestApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteRestApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteRestApi/UniversiteRestApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteRestApi/UniversiteRestApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UniversiteRestApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/UniversiteRestApi/appsettings.json" afterDir="false" />
-    </list>
+    <list default="true" id="a96add4c-8f33-48f9-9343-2cf62be3f1a3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -7,6 +7,8 @@ using UniversiteDomain.UseCases.UeUseCase.Update;
 using UniversiteDomain.UseCases.UeUseCases.Create;
 using UniversiteDomain.Exceptions.UeExeptions;
 using UniversiteDomain.Dtos;
+using UniversiteDomain.UseCases.UeUseCases.Csv;
+using System.Text;
 
 namespace UniversiteRestApi.Controllers;
 
@@ -88,5 +90,47 @@ public class UeController(IRepositoryFactory repositoryFactory) : ControllerBase
         DeleteUeUseCase uc = new DeleteUeUseCase(repositoryFactory);
         await uc.ExecuteAsync(id);
         return NoContent();
+    }
+
+    // GET: api/Ue/5/notes/csv
+    [HttpGet("{id}/notes/csv")]
+    public async Task<IActionResult> GetCsv(long id)
+    {
+        GenerateCsvNotesUseCase uc = new GenerateCsvNotesUseCase(repositoryFactory);
+        try
+        {
+            byte[] csvData = await uc.ExecuteAsync(id);
+            return File(csvData, "text/csv", $"notes_ue_{id}.csv");
+        }
+        catch (UeNotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    // POST: api/Ue/5/notes/csv
+    [HttpPost("{id}/notes/csv")]
+    public async Task<IActionResult> PostCsv(long id, IFormFile file)
+    {
+        try 
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("File is empty");
+
+            using (var stream = file.OpenReadStream())
+            {
+                 SaisirNotesUseCase uc = new SaisirNotesUseCase(repositoryFactory);
+                 await uc.ExecuteAsync(id, stream);
+            }
+            return NoContent();
+        }
+        catch (UeNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }
